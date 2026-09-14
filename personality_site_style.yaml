@@ -1,0 +1,275 @@
+project:
+  name: "世界的真相與人性｜16 型人格互動網頁"
+  locale: "zh-TW"
+  audience: "國中學生"
+  purpose:
+    - "讓學生快速找到自己的 16 型人格"
+    - "鼓勵學生瀏覽其他人格，理解差異而非貼標籤"
+    - "作為課堂 QR Code 延伸教材"
+  tone:
+    - "親切"
+    - "清楚"
+    - "具思辨性"
+    - "避免宿命式、診斷式語氣"
+
+visual_direction:
+  summary: "參考附圖的清爽人格測驗網站視覺：大量留白、柔和淺色背景、幾何扁平化圖像、四色人格家族、圓角卡片與柔和動態。不得直接複製 16Personalities 的 logo、角色插圖或版面素材。"
+  keywords:
+    - "clean"
+    - "flat geometric"
+    - "soft pastel"
+    - "editorial educational"
+    - "rounded cards"
+    - "friendly"
+    - "responsive"
+  background:
+    page: "#F7F9FA"
+    section: "#FFFFFF"
+    hero_tint: "#EEF5F7"
+  text:
+    primary: "#2F3A46"
+    secondary: "#6F7B87"
+    muted: "#98A2AD"
+    inverse: "#FFFFFF"
+  border:
+    default: "#E3E8EC"
+    subtle: "#EDF0F2"
+  shadow:
+    card: "0 8px 24px rgba(41, 54, 67, 0.08)"
+    elevated: "0 18px 48px rgba(41, 54, 67, 0.14)"
+  radius:
+    small: "10px"
+    medium: "16px"
+    large: "24px"
+    pill: "999px"
+
+personality_groups:
+  analysts:
+    zh_name: "分析家"
+    short_name: "紫人組"
+    traits: "N + T"
+    color: "#88619A"
+    soft: "#F2ECF5"
+    dark: "#684877"
+    types:
+      - "INTJ"
+      - "INTP"
+      - "ENTJ"
+      - "ENTP"
+  diplomats:
+    zh_name: "外交家"
+    short_name: "綠人組"
+    traits: "N + F"
+    color: "#33A474"
+    soft: "#EAF6F0"
+    dark: "#267C58"
+    types:
+      - "INFJ"
+      - "INFP"
+      - "ENFJ"
+      - "ENFP"
+  sentinels:
+    zh_name: "守衛者"
+    short_name: "藍人組"
+    traits: "S + J"
+    color: "#4298B4"
+    soft: "#EAF4F7"
+    dark: "#30768C"
+    types:
+      - "ISTJ"
+      - "ISFJ"
+      - "ESTJ"
+      - "ESFJ"
+  explorers:
+    zh_name: "探索者"
+    short_name: "黃人組"
+    traits: "S + P"
+    color: "#E4AE3A"
+    soft: "#FBF3DF"
+    dark: "#B58424"
+    types:
+      - "ISTP"
+      - "ISFP"
+      - "ESTP"
+      - "ESFP"
+
+typography:
+  chinese:
+    preferred:
+      - "\"Noto Sans TC\""
+      - "\"PingFang TC\""
+      - "\"Microsoft JhengHei\""
+      - "sans-serif"
+  headings:
+    weight: 700
+    line_height: 1.25
+  body:
+    weight: 400
+    line_height: 1.8
+    max_line_length: "42em"
+  type_code:
+    weight: 800
+    letter_spacing: "0.06em"
+
+layout:
+  max_width: "1180px"
+  page_padding:
+    desktop: "32px"
+    tablet: "24px"
+    mobile: "16px"
+  landing:
+    group_gap: "42px"
+    card_columns:
+      desktop: 4
+      tablet: 2
+      mobile: 1
+  detail:
+    max_content_width: "900px"
+    sticky_header: false
+    sections_per_row:
+      desktop: 2
+      mobile: 1
+
+cards:
+  personality:
+    min_height: "112px"
+    background: "#FFFFFF"
+    border: "1px solid var(--group-soft)"
+    hover:
+      translate_y: "-4px"
+      scale: 1.02
+      shadow: "0 14px 36px rgba(41, 54, 67, 0.12)"
+    selected:
+      scale: 1.08
+      shadow: "0 20px 56px rgba(41, 54, 67, 0.18)"
+  info:
+    background: "#FFFFFF"
+    border: "1px solid #E3E8EC"
+    radius: "16px"
+
+motion:
+  principle: "清楚、有回饋、不要花俏；動畫服務於導覽與理解。"
+  duration:
+    quick: "180ms"
+    normal: "360ms"
+    focus_transition: "520ms"
+  easing:
+    default: "cubic-bezier(0.22, 1, 0.36, 1)"
+  personality_open_sequence:
+    - "被點擊卡片微幅放大並提高陰影"
+    - "其他人格卡片透明度降至 0，並縮小至 0.96"
+    - "選取人格卡片移動到內容區上方中央"
+    - "人格代號與名稱放大成 detail hero"
+    - "下方 detail panel 以 translateY(20px) + opacity 0 淡入"
+  personality_close_sequence:
+    - "detail panel 淡出"
+    - "選取人格返回原位置"
+    - "其餘人格重新淡入"
+  accessibility:
+    reduced_motion: "若 prefers-reduced-motion: reduce，停用位移與縮放，只保留簡短淡入淡出。"
+
+interaction:
+  routing:
+    method: "URL hash"
+    examples:
+      - "#intj"
+      - "#enfp"
+    requirements:
+      - "直接開啟帶 hash 的網址時要自動進入該人格"
+      - "瀏覽器返回鍵能回到 16 人格總覽"
+      - "切換人格時更新 hash"
+  open_behavior:
+    other_cards_fade: true
+    selected_title_centered: true
+    detail_panel_below: true
+    scroll_to_detail: true
+  close_controls:
+    - "返回 16 型人格"
+    - "瀏覽器返回鍵"
+    - "鍵盤 Escape"
+  keyboard:
+    cards_focusable: true
+    enter_space_activate: true
+  touch:
+    min_target_size: "44px"
+
+detail_page:
+  hero:
+    fields:
+      - "四字母代號"
+      - "中文稱號"
+      - "所屬家族"
+      - "四個偏好拆解"
+      - "一句話摘要"
+  sections:
+    - id: "core"
+      title: "你可能怎麼看世界"
+    - id: "school"
+      title: "在學校裡可能的樣子"
+    - id: "learning"
+      title: "學習與做事方式"
+    - id: "friends"
+      title: "朋友與團隊合作"
+    - id: "strengths"
+      title: "可能的優勢"
+    - id: "blindspots"
+      title: "可能的盲點"
+    - id: "stress"
+      title: "壓力來時可能的反應"
+    - id: "growth"
+      title: "可以嘗試的成長方向"
+    - id: "scenario"
+      title: "學生生活情境"
+    - id: "reflection"
+      title: "想一想"
+  reflection_prompts:
+    - "哪些描述真的像你？請想到一個實際例子。"
+    - "哪些描述不像你？這可能說明了什麼？"
+    - "如果朋友和你是完全不同的類型，你會如何理解他的做法？"
+
+content_rules:
+  language: "繁體中文（台灣用語）"
+  audience_level: "國中生可讀，避免過度專業術語"
+  type_length:
+    target_chinese_chars: "700-1100"
+  writing:
+    - "使用『可能、傾向、較容易』等機率式語言"
+    - "不可使用『一定、天生就是、註定、最適合』等宿命式語言"
+    - "每型至少加入 2 個貼近學生生活的例子"
+    - "避免將 T 寫成冷血、F 寫成不理性、I 寫成害羞、P 寫成拖延"
+    - "不要把人格類型當成心理診斷"
+  academic_note:
+    required: true
+    text: "此頁用於人格偏好與自我探索。人格類型無法完整定義一個人，也不應作為能力、升學、職涯或人際價值判斷的依據。"
+
+copyright:
+  rules:
+    - "可研究 16Personalities 與 Myers & Briggs Foundation 的公開資料，但所有正文必須重新整理與改寫，不得大量複製原文。"
+    - "不得下載、重製或描摹 16Personalities 的角色插圖、logo 或網站專有視覺資產。"
+    - "人格稱號與四字母代號可作為文字辨識用途；視覺圖示須自行設計。"
+    - "頁尾保留資料來源區，列出研究來源連結與存取日期。"
+
+responsive:
+  breakpoints:
+    tablet: "900px"
+    mobile: "640px"
+  mobile_rules:
+    - "人格卡片改為單欄或雙欄"
+    - "detail hero 不可超出螢幕"
+    - "正文 16px 以上"
+    - "避免橫向捲動"
+    - "QR Code 開啟後以手機／平板閱讀為優先"
+
+wordpress:
+  target: "可放入 WordPress"
+  preferred_delivery:
+    - "index.html"
+    - "styles.css"
+    - "script.js"
+    - "personality-data.js"
+  constraints:
+    - "不要依賴 Node.js 建置流程"
+    - "不要使用需要伺服器端執行的程式"
+    - "盡量使用原生 HTML5 / CSS / JavaScript"
+    - "若 WordPress 編輯器會過濾 script，提供 iframe 靜態頁部署方案"
+    - "所有路徑使用相對路徑"
